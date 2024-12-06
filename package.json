@@ -13,7 +13,7 @@
 		"lint:fix": "eslint . && prettier --write .",
 		"test:e2e": "playwright test",
 		"test": "npm run test:e2e",
-		"test:ci": "npm run test:unit -- --run --coverage"
+		"test:ci": "npm run test:e2e -- --run --coverage"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.3",

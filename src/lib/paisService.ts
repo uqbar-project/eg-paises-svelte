@@ -22,8 +22,8 @@ const toPais = ({
 	currencies: object[]
 	cioc: string
 }): Pais => {
-  const currency = currencies?.length ? Object.keys(currencies)[0] : ''
-  return new Pais(name.common, flag, currency, cioc)
+	const currency = currencies?.length ? Object.keys(currencies)[0] : ''
+	return new Pais(name.common, flag, currency, cioc)
 }
 
 export const paisService = new PaisService()
