@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { Pais } from "../lib/pais";
-	import { paisService } from "../lib/paisService"
+	import { Pais } from '../lib/pais'
+	import { paisService } from '../lib/paisService'
 
-  let paisBusqueda = $state('')
-  let paises = $state<Pais[]>([])
+	let paisBusqueda = $state('')
+	let paises = $state<Pais[]>([])
 
-  const buscar = async () => {
-    paises = await paisService.buscarPais(paisBusqueda)
-  }
+	const buscar = async () => {
+		paises = await paisService.buscarPais(paisBusqueda)
+	}
 </script>
 
 <h2>Países</h2>
