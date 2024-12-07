@@ -11,11 +11,17 @@
 	const buscar = async () => {
 		paises = await paisService.buscarPais(paisBusqueda)
 	}
+
+	const handleKeydown = (event: { keyCode: number }) => {
+		if (event.keyCode === 13) {
+			buscar()
+		}
+	}
 </script>
 
 <h2>Países</h2>
 <div class='busqueda'>
-	<input bind:value={paisBusqueda} placeholder='Ingrese un valor para buscar países'/>
+	<input onkeydown={handleKeydown} bind:value={paisBusqueda} placeholder='Ingrese un valor para buscar países'/>
 	<button onclick={buscar} disabled={!buscarHabilitado}>Buscar</button>
 	</div>
 <div class='paises'>
