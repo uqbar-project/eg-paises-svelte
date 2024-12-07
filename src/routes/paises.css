@@ -31,6 +31,16 @@ button {
   justify-content: center;
   height: 5rem;
   border: 1px solid gray;
+  background-color: antiquewhite;
+}
+
+.pais:hover {
+  cursor: pointer;
+  background-color: bisque;
+}
+
+.bandera {
+  font-size: x-large;
 }
 
 .nombre_pais {
