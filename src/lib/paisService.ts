@@ -20,15 +20,25 @@ const toPais = ({
 	flag,
 	name,
 	currencies,
-	cioc
+	cioc,
+	population,
+	area,
+	capital,
+	timezones,
 }: {
 	flag: string
 	name: { common: string }
-	currencies: object[]
-	cioc: string
+	currencies: { [key: string]: { name: string; symbol: string } },
+	cioc: string,
+	population: number,
+	area: number,
+	capital: string,
+	timezones: string[],
 }): Pais => {
-	const currency = currencies?.length ? Object.keys(currencies)[0] : ''
-	return new Pais(name?.common, flag, currency, cioc)
+	const keysCurrencies = Object.keys(currencies ?? {})
+	const currency = keysCurrencies?.length ? currencies[keysCurrencies[0]].name : ''
+	const pais = new Pais(name?.common, flag, currency, cioc, population, area, capital, timezones[0])
+	return pais
 }
 
 export const paisService = new PaisService()

@@ -1,0 +1,47 @@
+* {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.pais_titulo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20fr 1fr;
+  gap: 5px;
+  align-items: center;
+}
+
+.pais_single {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.bandera_single {
+  font-size: xxx-large;
+  height: auto;
+  width: 20rem;
+}
+
+.pais_single span {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+h2 {
+  margin: 1rem 0;
+}
+
+img.superpoblado {
+  width: 25px;
+  height: auto;
+  margin-left: 5px;
+  margin-top: -5px;
+}
+
+.poblacion {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}

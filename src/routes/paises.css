@@ -4,7 +4,8 @@
 }
 
 h2 {
-  background-color: rgb(209, 194, 194);
+  background: rgb(228,226,192);
+  background: linear-gradient(90deg, rgba(228,226,192,1) 0%, rgba(255,255,255,1) 32%);
   padding: 0.5rem 0.5rem;
 }
 
