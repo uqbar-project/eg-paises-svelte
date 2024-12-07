@@ -28,9 +28,7 @@ const toPais = ({
 	cioc: string
 }): Pais => {
 	const currency = currencies?.length ? Object.keys(currencies)[0] : ''
-	// TODO: deshacerse de los objetos de dominio,
-	// pide POJOs
-	return { ...new Pais(name?.common, flag, currency, cioc) }
+	return new Pais(name?.common, flag, currency, cioc)
 }
 
 export const paisService = new PaisService()
