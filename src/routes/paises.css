@@ -1,0 +1,38 @@
+* {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+}
+
+h2 {
+  background-color: rgb(209, 194, 194);
+  padding: 0.5rem 0.5rem;
+}
+
+input {
+  height: 1.5rem;
+  width: 25rem;
+}
+
+button {
+  height: 2rem;
+}
+
+.paises {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+.pais {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 5rem;
+  border: 1px solid gray;
+}
+
+.nombre_pais {
+  text-align: center;
+}

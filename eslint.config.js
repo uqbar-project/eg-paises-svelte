@@ -45,7 +45,10 @@ export default [
 			'svelte/no-target-blank': 'error',
 			'svelte/no-at-debug-tags': 'error',
 			'svelte/no-reactive-functions': 'error',
-			'svelte/no-reactive-literals': 'error'
+			'svelte/no-reactive-literals': 'error',
+			'svelte/ignore-warnings': (warning) => {
+				return warning.code.startsWith('a11y')
+			},
 		}
 	}
 ]
