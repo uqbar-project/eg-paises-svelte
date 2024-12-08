@@ -12,9 +12,9 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check .",
 		"lint:fix": "prettier --write .",
-		"test:e2e": "playwright test",
+		"test:e2e": "playwright test --ui",
 		"test": "npm run test:e2e",
-		"test:ci": "npm run test:e2e"
+		"test:ci": "playwright test"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.3",
