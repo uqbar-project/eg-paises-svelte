@@ -1,14 +1,6 @@
-* {
-  font-family: "Rubik", sans-serif;
-  font-optical-sizing: auto;
-}
-
-.pais_titulo {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 20fr 1fr;
-  gap: 5px;
-  align-items: center;
+.pais_page {
+  display: flex;
+  flex-direction: column;
 }
 
 .pais_single {
@@ -21,7 +13,7 @@
 .bandera_single {
   font-size: xxx-large;
   height: auto;
-  width: 20rem;
+  margin-right: 1rem;
 }
 
 .pais_single span {
@@ -44,4 +36,10 @@ img.superpoblado {
   display: flex;
   flex-direction: row;
   align-content: center;
+}
+
+.botonera {
+  margin-top: 1.5em;
+  height: 3em;
+  font-size: large;
 }

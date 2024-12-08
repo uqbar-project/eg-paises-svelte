@@ -19,7 +19,9 @@
 	}
 </script>
 
-<h2>Países</h2>
+<div class='titulo'>
+	<h2>Países</h2>
+</div>
 <div class='busqueda'>
 	<input onkeydown={handleKeydown} bind:value={paisBusqueda} placeholder='Ingrese un valor para buscar países'/>
 	<button onclick={buscar} disabled={!buscarHabilitado}>Buscar</button>

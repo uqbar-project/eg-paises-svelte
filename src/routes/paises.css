@@ -1,17 +1,12 @@
-* {
-  font-family: "Rubik", sans-serif;
-  font-optical-sizing: auto;
-}
-
-h2 {
-  background: rgb(228,226,192);
-  background: linear-gradient(90deg, rgba(228,226,192,1) 0%, rgba(255,255,255,1) 32%);
-  padding: 0.5rem 0.5rem;
+.busqueda {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
 
 input {
-  height: 1.5rem;
-  width: 25rem;
+  height: 1.75rem;
+  width: calc(100vw - 2rem - 5px);
 }
 
 button {

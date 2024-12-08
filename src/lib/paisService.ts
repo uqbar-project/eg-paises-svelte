@@ -19,25 +19,39 @@ class PaisService {
 const toPais = ({
 	flag,
 	name,
+	translations,
 	currencies,
 	cioc,
+	ccn3,
 	population,
 	area,
 	capital,
-	timezones,
+	timezones
 }: {
 	flag: string
 	name: { common: string }
-	currencies: { [key: string]: { name: string; symbol: string } },
-	cioc: string,
-	population: number,
-	area: number,
-	capital: string,
-	timezones: string[],
+	translations: { [key: string]: { common: string } }
+	currencies: { [key: string]: { name: string; symbol: string } }
+	cioc: string
+	ccn3: string
+	population: number
+	area: number
+	capital: string
+	timezones: string[]
 }): Pais => {
 	const keysCurrencies = Object.keys(currencies ?? {})
+	const countryName = translations['spa']?.common ?? name?.common
 	const currency = keysCurrencies?.length ? currencies[keysCurrencies[0]].name : ''
-	const pais = new Pais(name?.common, flag, currency, cioc, population, area, capital, timezones[0])
+	const pais = new Pais(
+		countryName,
+		flag,
+		currency,
+		cioc ?? ccn3,
+		population,
+		area,
+		capital,
+		timezones[0]
+	)
 	return pais
 }
 
