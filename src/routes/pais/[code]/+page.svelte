@@ -33,5 +33,5 @@
 		<div><span>Código de país:</span>{pais.codigo}</div>
 		<div title={pais.timezone}><span>Qué hora es:</span>{pais.queHoraEs()}</div>
 	</div>
-	<button class="botonera" onclick={volver}>Volver</button>
+	<button data-testid="volver" class="botonera" onclick={volver}>Volver</button>
 </div>

@@ -24,15 +24,20 @@
 </div>
 <div class="busqueda">
 	<input
+		data-testid="paisBusqueda"
 		onkeydown={handleKeydown}
 		bind:value={paisBusqueda}
 		placeholder="Ingrese un valor para buscar países"
 	/>
-	<button onclick={buscar} disabled={!buscarHabilitado}>Buscar</button>
+	<button data-testid="buscar" onclick={buscar} disabled={!buscarHabilitado}>Buscar</button>
 </div>
 <div class="paises">
-	{#each paises as pais}
-		<button class="pais" onclick={() => goto(`/pais/${pais.codigo}`)}>
+	{#each paises as pais, indice}
+		<button
+			class="pais"
+			data-testid={`pais-${indice}`}
+			onclick={() => goto(`/pais/${pais.codigo}`)}
+		>
 			<div class="bandera">{pais.bandera}</div>
 			<div class="nombre_pais">{pais.nombre}</div>
 		</button>
