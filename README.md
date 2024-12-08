@@ -11,3 +11,10 @@ En este ejemplo vemos
 - cómo es la búsqueda asincrónica en un origen externo
 - un ejemplo de test end-to-end (e2e)
 
+## Ejecutando tests e2e
+
+Tenemos que instalar localmente Playwright para lo cual escribimos
+
+```bash
+yarn playwright install
+```
