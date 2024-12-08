@@ -8,3 +8,4 @@ yarn.lock
 *.html
 tsconfig.json
 /node_modules/
+/.github/
