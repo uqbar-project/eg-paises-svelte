@@ -1,5 +1,6 @@
 {
 	"name": "eg-paises-svelte",
+	"license": "LGPL-3.0-or-later",
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
@@ -9,8 +10,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint .",
-		"lint:fix": "eslint . && prettier --write .",
+		"lint": "prettier --check .",
+		"lint:fix": "prettier --write .",
 		"test:e2e": "playwright test",
 		"test": "npm run test:e2e",
 		"test:ci": "npm run test:e2e -- --run --coverage"

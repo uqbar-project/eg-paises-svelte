@@ -18,3 +18,12 @@ Tenemos que instalar localmente Playwright para lo cual escribimos
 ```bash
 yarn playwright install
 ```
+
+## Cosas pendientes
+
+- Ver si funcionan los tests e2e  
+- Eliminar ESLint (o Prettier)
+- Cambiar la doc de la wiki, quedémonos con uno y que sea el que menos quilombo haga
+- Toquetear Vscode así como los scripts del package.json para que corra el linter elegido y que en vscode grabe con las reglas que elegimos
+- También hay que probar el build
+- Hacer la doc del README

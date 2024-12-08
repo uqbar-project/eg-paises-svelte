@@ -1,5 +1,5 @@
-import { format } from "date-fns"
-import { toZonedTime } from "date-fns-tz"
+import { format } from 'date-fns'
+import { toZonedTime } from 'date-fns-tz'
 
 export class Pais {
 	constructor(
@@ -10,11 +10,11 @@ export class Pais {
 		public poblacion: number,
 		public area: number,
 		public capital: string,
-		public timezone: string,
+		public timezone: string
 	) {}
 
 	superpoblado() {
-		return (this.poblacion / this.area) > 100
+		return this.poblacion / this.area > 100
 	}
 
 	queHoraEs() {

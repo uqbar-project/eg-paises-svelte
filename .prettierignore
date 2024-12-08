@@ -2,3 +2,9 @@
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
+.vscode
+*.md
+*.css
+*.html
+tsconfig.json
+/node_modules/

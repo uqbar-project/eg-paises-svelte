@@ -48,7 +48,7 @@ export default [
 			'svelte/no-reactive-literals': 'error',
 			'svelte/ignore-warnings': (warning) => {
 				return warning.code.startsWith('a11y')
-			},
+			}
 		}
 	}
 ]
