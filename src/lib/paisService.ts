@@ -5,28 +5,28 @@ const BASE_URL = 'https://restcountries.com'
 const VERSION = 'v3.1'
 
 class PaisService {
-	async buscarPais(paisBusqueda: string): Promise<Pais[]> {
-		const response = await axios.get(`${BASE_URL}/${VERSION}/name/${paisBusqueda}`)
-		return response.data.map(toPais)
-	}
+  async buscarPais(paisBusqueda: string): Promise<Pais[]> {
+    const response = await axios.get(`${BASE_URL}/${VERSION}/name/${paisBusqueda}`)
+    return response.data.map(toPais)
+  }
 
-	async datosDePais(codigoDePais: string): Promise<Pais> {
-		const response = await axios.get(`${BASE_URL}/${VERSION}/alpha/${codigoDePais}`)
-		return toPais(response.data[0])
-	}
+  async datosDePais(codigoDePais: string): Promise<Pais> {
+    const response = await axios.get(`${BASE_URL}/${VERSION}/alpha/${codigoDePais}`)
+    return toPais(response.data[0])
+  }
 }
 
 const toPais = ({
-	flag,
-	name,
-	translations,
-	currencies,
-	cioc,
-	ccn3,
-	population,
-	area,
-	capital,
-	timezones
+  flag,
+  name,
+  translations,
+  currencies,
+  cioc,
+  ccn3,
+  population,
+  area,
+  capital,
+  timezones
 }: {
 	flag: string
 	name: { common: string }
@@ -39,20 +39,20 @@ const toPais = ({
 	capital: string
 	timezones: string[]
 }): Pais => {
-	const keysCurrencies = Object.keys(currencies ?? {})
-	const countryName = translations['spa']?.common ?? name?.common
-	const currency = keysCurrencies?.length ? currencies[keysCurrencies[0]].name : ''
-	const pais = new Pais(
-		countryName,
-		flag,
-		currency,
-		cioc ?? ccn3,
-		population,
-		area,
-		capital,
-		timezones[0]
-	)
-	return pais
+  const keysCurrencies = Object.keys(currencies ?? {})
+  const countryName = translations['spa']?.common ?? name?.common
+  const currency = keysCurrencies?.length ? currencies[keysCurrencies[0]].name : ''
+  const pais = new Pais(
+    countryName,
+    flag,
+    currency,
+    cioc ?? ccn3,
+    population,
+    area,
+    capital,
+    timezones[0]
+  )
+  return pais
 }
 
 export const paisService = new PaisService()
