@@ -12,9 +12,9 @@
 	  paises = await paisService.buscarPais(paisBusqueda)
 	}
 
-	const handleKeydown = (event: { keyCode: number }) => {
+	const handleKeydown = async (event: { keyCode: number }) => {
 	  if (event.keyCode === 13) {
-	    buscar()
+	    await buscar()
 	  }
 	}
 </script>
