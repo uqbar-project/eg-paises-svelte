@@ -20,11 +20,11 @@ En la página inicial tenemos en la variante inicial
 - un input ligado a un estado: el país que vamos a buscar, con un plus: en el caso de que presionemos Enter también disparamos la búsqueda
 - un botón que dispara la búsqueda, estará habilitado si escribimos algún valor en el input
 
-```sv
+```svelte
 <script lang='ts'>
-	let paisBusqueda = $state('')
-	let buscarHabilitado = $derived(paisBusqueda.trim() !== '')
-	const handleKeydown = ...
+  let paisBusqueda = $state('')
+  let buscarHabilitado = $derived(paisBusqueda.trim() !== '')
+  const handleKeydown = ...
 </script>
 ...
 
@@ -47,9 +47,9 @@ Como vamos a pedir información a una fuente externa, no podemos saber a priori 
 En la página escribimos
 
 ```ts
-	const buscar = async () => {
-	  paises = await paisService.buscarPais(paisBusqueda)
-	}
+const buscar = async () => {
+  paises = await paisService.buscarPais(paisBusqueda)
+}
 ```
 
 y el service se define además como una clase pero exponemos una instancia, que termina siendo un **Singleton**:
@@ -79,7 +79,7 @@ y podría tomar más responsabilidades. Además, en este caso no tenemos control
 
 Una vez que tenemos la lista de países, los mostramos en una grilla:
 
-```sv
+```svelte
 {#each paises as pais, indice}
   <button
     class='pais'
@@ -219,4 +219,4 @@ Por suerte Playwright, al igual que otras tecnologías como Cypress, Selenium o 
 ## Cosas pendientes
 
 - Agregar cobertura
-- Usar un mecanismo de debouncing para disparar las consultas de los países directamente
+- Usar un mecanismo de debouncing para disparar las consultas de los países directamente, porque la API te permite 10 request por minuto
