@@ -80,10 +80,10 @@ y podría tomar más responsabilidades. Además, en este caso no tenemos control
 Una vez que tenemos la lista de países, los mostramos en una grilla:
 
 ```svelte
-{#each paises as pais, indice}
+{#each paises as pais}
   <button
     class='pais'
-    data-testid={`pais-${indice}`}
+    data-testid={`pais-${pais.codigo}`}
     onclick={() => goto(`/pais/${pais.codigo}`)}
   >
     <Bandera bandera={pais.bandera}/>
@@ -94,7 +94,7 @@ Una vez que tenemos la lista de países, los mostramos en una grilla:
 
 El lector podrá pensar, ¿por qué un button y no un div? Esto tiene que ver con recomendaciones de usabilidad que Svelte aplica, por lo que si usamos un div te va a aparecer un molesto warning:
 
-![warning por usar un div clickeable](./images/warningDiv.png)
+![warning por usar un div clickeable](./images/warningDivNuevo.png)
 
 Para más información podés ver [este artículo](https://svelte.dev/docs/svelte/compiler-warnings).
 
@@ -210,6 +210,8 @@ test('flujo principal: buscamos un país y al hacer click nos dirige a la págin
 
 Sí podrán notar que todas las operaciones son asincrónicas, y requieren envolverse dentro de un `await`. Eso permite que esperemos un tiempo prudencial (5 segundos) hasta que el elemento que buscamos aparezca en el DOM. Seguimos prefiriendo la búsqueda por `data-testid`, o por `role` más que por clases css o texto.
 
+> Otra cosa buena es que podemos abstraer flujos, como ir a la página de un país y volver al menú principal. Lo que sí debemos tener en cuenta es que necesitamos pasar la `page` como parámetro porque es el objeto donde se conserva el estado actual de nuestros tests e2e.
+
 ### Qué pasa cuando fallan los tests
 
 Por suerte Playwright, al igual que otras tecnologías como Cypress, Selenium o TestCafé, ofrecen buenos mecanismos de análisis de errores:
@@ -218,7 +220,7 @@ Por suerte Playwright, al igual que otras tecnologías como Cypress, Selenium o 
 
 ## Debouncing
 
-Vamos a agregar un último feature, queremos permitir la búsqueda automática, a medida que escribimos. Pero la API tiene una limitación de 10 requests por minuto. Entonces no podemos capturar el evento onKeyDown ni onKeyUp. Lo que necesitamos es tomarnos un tiempo prudencial hasta enviar la consulta, concepto que se llama **debouncing** y que podemos ver con un ejemplo visual.
+Vamos a agregar un último feature, queremos permitir la búsqueda automática, a medida que escribimos. Pero la API tiene una limitación de 10 requests por minuto. Entonces no podemos capturar el evento onKeyDown ni onKeyUp. Lo que necesitamos es tomarnos un tiempo para enviar la consulta, concepto que se llama **debouncing** y que podemos ver con un ejemplo visual.
 
 ![debouncing](./images/forms-debounce.gif)
 

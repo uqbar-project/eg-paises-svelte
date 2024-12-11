@@ -52,14 +52,14 @@
 	{/if}
 </div>
 <div class='check'>
-	<input class='checkbox' type="checkbox" name="Buscar" id="buscar" bind:checked={busquedaAutomatica}>
-	<label for="buscar">Buscar automáticamente</label>
+	<input class='checkbox' type="checkbox" name="busquedaAutomatica" data-testid="busquedaAutomatica" bind:checked={busquedaAutomatica}>
+	<label for="busquedaAutomatica">Buscar automáticamente</label>
 </div>
 <div class='paises'>
-	{#each paises as pais, indice}
+	{#each paises as pais}
 		<button
 			class='pais'
-			data-testid={`pais-${indice}`}
+			data-testid={`pais-${pais.codigo}`}
 			onclick={() => goto(`/pais/${pais.codigo}`)}
 		>
 			<Bandera bandera={pais.bandera}/>
