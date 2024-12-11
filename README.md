@@ -218,5 +218,4 @@ Por suerte Playwright, al igual que otras tecnologías como Cypress, Selenium o 
 
 ## Cosas pendientes
 
-- Agregar cobertura
 - Usar un mecanismo de debouncing para disparar las consultas de los países directamente, porque la API te permite 10 request por minuto

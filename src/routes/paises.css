@@ -4,12 +4,18 @@
   gap: 5px;
 }
 
+h2 {
+  font-size: 1.5rem;
+}
+
 input {
+  font-size: 0.9rem;
   height: 1.75rem;
   width: calc(100vw - 2rem - 5px);
 }
 
 button {
+  font-size: 0.9rem;
   height: 2rem;
 }
 
@@ -35,10 +41,13 @@ button {
   background-color: bisque;
 }
 
-.bandera {
-  font-size: x-large;
-}
-
 .nombre_pais {
   text-align: center;
+  color: darkslategray;
+}
+
+@media(min-width: 440px) {
+  .paises {
+    grid-template-columns: 1fr 1fr;
+  }
 }

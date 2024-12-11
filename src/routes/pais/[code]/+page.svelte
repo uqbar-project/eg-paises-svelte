@@ -2,6 +2,7 @@
 	import './pais.css'
 	import { formatearEntero } from '$lib/utils'
 	import { goto } from '$app/navigation'
+    import Bandera from '$lib/Bandera.svelte';
 	
 	let { data } = $props()
 	const { pais } = data
@@ -12,7 +13,7 @@
 
 <div class="pais_page">
 	<div class="titulo">
-		<div class="bandera_single">{pais.bandera}</div>
+		<Bandera bandera={pais.bandera}/>
 		<h2>{pais.nombre}</h2>
 	</div>
 	<div class="pais_single">

@@ -17,7 +17,7 @@ class PaisService {
 }
 
 const toPais = ({
-  flag,
+  flags,
   name,
   translations,
   currencies,
@@ -28,7 +28,7 @@ const toPais = ({
   capital,
   timezones
 }: {
-	flag: string
+	flags: { svg: string },
 	name: { common: string }
 	translations: { [key: string]: { common: string } }
 	currencies: { [key: string]: { name: string; symbol: string } }
@@ -44,7 +44,7 @@ const toPais = ({
   const currency = keysCurrencies?.length ? currencies[keysCurrencies[0]].name : ''
   const pais = new Pais(
     countryName,
-    flag,
+    flags.svg,
     currency,
     cioc ?? ccn3,
     population,

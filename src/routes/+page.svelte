@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation'
 	import { Pais } from '../lib/pais'
 	import { paisService } from '../lib/paisService'
+  import Bandera from '$lib/Bandera.svelte'
 
 	let paisBusqueda = $state('')
 	let paises = $state<Pais[]>([])
@@ -38,7 +39,7 @@
 			data-testid={`pais-${indice}`}
 			onclick={() => goto(`/pais/${pais.codigo}`)}
 		>
-			<div class='bandera'>{pais.bandera}</div>
+			<Bandera bandera={pais.bandera}/>
 			<div class='nombre_pais'>{pais.nombre}</div>
 		</button>
 	{/each}
