@@ -6,12 +6,18 @@ import js from '@eslint/js'
 import svelteParser from 'svelte-eslint-parser'
 import tsEslint from 'typescript-eslint'
 import tsParser from '@typescript-eslint/parser'
+import globals from 'globals'
 
 export default [
   js.configs.recommended,
   ...tsEslint.configs.strict,
   ...eslintPluginSvelte.configs['flat/recommended'],
   {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
+    },
     rules: {
       quotes: [
         'warn',

@@ -190,7 +190,7 @@ export default defineConfig({
 })
 ```
 
-### Anatomía de un test
+### Anatomía de un test e2e
 
 Ahora sí vamos a ver el test, no demasiado diferente a lo que veníamos haciendo:
 
