@@ -218,4 +218,57 @@ Por suerte Playwright, al igual que otras tecnologías como Cypress, Selenium o 
 
 ## Debouncing
 
-- Usar un mecanismo de debouncing para disparar las consultas de los países directamente, porque la API te permite 10 request por minuto
+Vamos a agregar un último feature, queremos permitir la búsqueda automática, a medida que escribimos. Pero la API tiene una limitación de 10 requests por minuto. Entonces no podemos capturar el evento onKeyDown ni onKeyUp. Lo que necesitamos es tomarnos un tiempo prudencial hasta enviar la consulta, concepto que se llama **debouncing** y que podemos ver con un ejemplo visual.
+
+![debouncing](./images/forms-debounce.gif)
+
+Lo que hacemos es demorar la llamada a nuestra función mediante un setTimeout. Pero ojo, no alcanza con hacer eso **siempre**, porque fíjense lo que pasa si escribimos
+
+- 'A', disparammos la búsqueda pero que demore 1 segundo, ok
+- a los 80 ms escribimos 'R', disparamos nuevamente la búsqueda pero que demore 1 segundo, ok
+- a los 75 ms escribimos 'G', disparamos nuevamente la búsqueda pero que demore 1 segundo, ok
+
+finalmente estaríamos llamando igualmente a la API 3 veces. En lugar de esta estrategia, lo que vamos a hacer es:
+
+- 'A', disparammos la búsqueda pero que demore 1 segundo, ok
+- a los 80 ms escribimos 'R', _cancelamos la búsqueda anterior_ y disparamos una nueva búsqueda pero que demore 1 segundo,
+- a los 75 ms escribimos 'G', _cancelamos la búsqueda anterior_ y disparamos nuevamente la búsqueda pero que demore 1 segundo
+
+Ahora sí, solamente estamos llamando una vez a la API cuando el usuario demoró lo suficiente (1 segundo al menos).
+
+Veamos la implementación:
+
+```ts
+let timeout: ReturnType<typeof setTimeout>
+
+const debounce = (callback: Function, wait: number) => {
+  return (...args: any[]) => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => { callback(...args) }, wait)
+  }
+}
+
+const handleKeyUpBuscar = async () => {
+  if (busquedaAutomatica && buscarHabilitado) {
+    debounce(buscar, 1000)()
+  }
+}
+```
+
+y la función `handleKeyUpBuscar` se asocia al evento onKeyup del input de búsqueda:
+
+```svelte
+<input
+  data-testid='paisBusqueda'
+  onkeydown={handleKeyDownBuscar}
+  onkeyup={handleKeyUpBuscar}
+  bind:value={paisBusqueda}
+  placeholder='Ingrese un valor para buscar países'
+/>
+```
+
+Agregamos también un renderizado condicional del botón de Buscar y un checkbox bindeado a una propiedad que nos indica si la búsqueda es automática o no. Dejamos al lector que profundice mirando el ejemplo.
+
+Como consecuencia de esta técnica, podemos abrir el navegador en la solapa Network y ver cómo se dispara una sola vez la búsqueda:
+
+![debounce en la búsqueda](./videos/debounceBusqueda.gif)
