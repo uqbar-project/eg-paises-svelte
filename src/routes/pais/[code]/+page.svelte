@@ -2,7 +2,7 @@
 	import './pais.css'
 	import { formatearEntero } from '$lib/utils'
 	import { goto } from '$app/navigation'
-    import Bandera from '$lib/Bandera.svelte';
+  import Bandera from '$lib/Bandera.svelte'
 	
 	let { data } = $props()
 	const { pais } = data

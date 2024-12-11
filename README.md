@@ -86,7 +86,7 @@ Una vez que tenemos la lista de países, los mostramos en una grilla:
     data-testid={`pais-${indice}`}
     onclick={() => goto(`/pais/${pais.codigo}`)}
   >
-    <div class='bandera'>{pais.bandera}</div>
+    <Bandera bandera={pais.bandera}/>
     <div class='nombre_pais'>{pais.nombre}</div>
   </button>
 {/each}
@@ -216,6 +216,6 @@ Por suerte Playwright, al igual que otras tecnologías como Cypress, Selenium o 
 
 ![playwright failure](./videos/e2e-fail.gif)
 
-## Cosas pendientes
+## Debouncing
 
 - Usar un mecanismo de debouncing para disparar las consultas de los países directamente, porque la API te permite 10 request por minuto

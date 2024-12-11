@@ -11,7 +11,6 @@ export default [
   js.configs.recommended,
   ...tsEslint.configs.strict,
   ...eslintPluginSvelte.configs['flat/recommended'],
-  // eslintPluginPrettierRecommended, // must be last to override conflicting rules.
   {
     rules: {
       quotes: [
@@ -27,16 +26,6 @@ export default [
       'no-cond-assign': ['error', 'always'],
       'no-console': 'error',
       '@typescript-eslint/sort-type-constituents': 'error',
-      'sort-imports': [
-        'error',
-        {
-          ignoreCase: true,
-          ignoreDeclarationSort: false,
-          ignoreMemberSort: false,
-          memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-          allowSeparatedGroups: true,
-        },
-      ],
     },
   },
   {
