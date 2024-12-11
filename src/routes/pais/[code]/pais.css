@@ -47,3 +47,7 @@ img.superpoblado {
   height: 3em;
   font-size: large;
 }
+
+.botonera:hover {
+  cursor: pointer;
+}

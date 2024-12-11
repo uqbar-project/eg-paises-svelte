@@ -19,6 +19,22 @@ button {
   height: 2rem;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
+.check {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.checkbox {
+  width: auto;
+  margin: 0 0.5rem;
+}
+
+
 .paises {
   margin-top: 1rem;
   display: grid;
@@ -46,7 +62,7 @@ button {
   color: darkslategray;
 }
 
-@media(min-width: 440px) {
+@media(max-width: 500px) {
   .paises {
     grid-template-columns: 1fr 1fr;
   }

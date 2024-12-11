@@ -6,6 +6,7 @@
   import Bandera from '$lib/Bandera.svelte'
 
 	let paisBusqueda = $state('')
+	let busquedaAutomatica = $state(false)
 	let paises = $state<Pais[]>([])
 	let buscarHabilitado = $derived(paisBusqueda.trim() !== '')
 
@@ -13,10 +14,25 @@
 	  paises = await paisService.buscarPais(paisBusqueda)
 	}
 
-	const handleKeydown = async (event: { keyCode: number }) => {
+	const handleKeyDownBuscar = async (event: { keyCode: number }) => {
 	  if (event.keyCode === 13) {
 	    await buscar()
 	  }
+	}
+
+	let timeout: ReturnType<typeof setTimeout>
+
+	const debounce = (callback: Function, wait: number) => {
+		return (...args: any[]) => {
+			clearTimeout(timeout)
+			timeout = setTimeout(() => { callback(...args) }, wait)
+		}
+	}
+
+	const handleKeyUpBuscar = async () => {
+		if (busquedaAutomatica && buscarHabilitado) {
+			debounce(buscar, 1000)()
+		}
 	}
 </script>
 
@@ -26,11 +42,18 @@
 <div class='busqueda'>
 	<input
 		data-testid='paisBusqueda'
-		onkeydown={handleKeydown}
+		onkeydown={handleKeyDownBuscar}
+		onkeyup={handleKeyUpBuscar}
 		bind:value={paisBusqueda}
 		placeholder='Ingrese un valor para buscar países'
 	/>
-	<button data-testid='buscar' onclick={buscar} disabled={!buscarHabilitado}>Buscar</button>
+	{#if !busquedaAutomatica}
+		<button data-testid='buscar' onclick={buscar} disabled={!buscarHabilitado}>Buscar</button>
+	{/if}
+</div>
+<div class='check'>
+	<input class='checkbox' type="checkbox" name="Buscar" id="buscar" bind:checked={busquedaAutomatica}>
+	<label for="buscar">Buscar automáticamente</label>
 </div>
 <div class='paises'>
 	{#each paises as pais, indice}

@@ -3,7 +3,7 @@
 
 [![Build](https://github.com/uqbar-project/eg-paises-svelte/actions/workflows/build.yml/badge.svg)](https://github.com/uqbar-project/eg-paises-svelte/actions/workflows/build.yml)
 
-![demo](./videos/demo.gif)
+![demo](./videos/demoNueva.gif)
 
 En este ejemplo podemos estudiar
 
