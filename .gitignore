@@ -1,4 +1,3 @@
-test-results
 node_modules
 
 # Output
@@ -28,3 +27,6 @@ coverage
 
 # VSCode
 .history
+
+# Playwright
+test-results
