@@ -4,14 +4,22 @@
   import { Pais } from '../lib/pais'
   import { paisService } from '../lib/paisService'
   import Bandera from '$lib/Bandera.svelte'
+  import { getErrorMessage } from '$lib/utils'
+  import { fade } from 'svelte/transition'
 
   let paisBusqueda = $state('')
+  let errorMessage = $state('')
   let busquedaAutomatica = $state(false)
   let paises = $state<Pais[]>([])
   let buscarHabilitado = $derived(paisBusqueda.trim() !== '')
 
   const buscar = async () => {
-    paises = await paisService.buscarPais(paisBusqueda)
+    try {
+      paises = await paisService.buscarPais(paisBusqueda)
+    } catch (error: unknown) {
+      errorMessage = getErrorMessage(error)
+      setTimeout(() => { errorMessage = ''}, 5000)
+    }
   }
 
   const handleKeyDownBuscar = async (event: { keyCode: number }) => {
@@ -75,3 +83,6 @@
     </button>
   {/each}
 </div>
+{#if errorMessage}
+  <div class="error-message" transition:fade>{errorMessage}</div>
+{/if}

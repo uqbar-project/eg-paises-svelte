@@ -226,13 +226,13 @@ Vamos a agregar un último feature, queremos permitir la búsqueda automática, 
 
 Lo que hacemos es demorar la llamada a nuestra función mediante un setTimeout. Pero ojo, no alcanza con hacer eso **siempre**, porque fíjense lo que pasa si escribimos
 
-- 'A', disparammos la búsqueda pero que demore 1 segundo, ok
+- 'A', disparamos la búsqueda pero que demore 1 segundo, ok
 - a los 80 ms escribimos 'R', disparamos nuevamente la búsqueda pero que demore 1 segundo, ok
 - a los 75 ms escribimos 'G', disparamos nuevamente la búsqueda pero que demore 1 segundo, ok
 
 finalmente estaríamos llamando igualmente a la API 3 veces. En lugar de esta estrategia, lo que vamos a hacer es:
 
-- 'A', disparammos la búsqueda pero que demore 1 segundo, ok
+- 'A', disparamos la búsqueda pero que demore 1 segundo, ok
 - a los 80 ms escribimos 'R', _cancelamos la búsqueda anterior_ y disparamos una nueva búsqueda pero que demore 1 segundo,
 - a los 75 ms escribimos 'G', _cancelamos la búsqueda anterior_ y disparamos nuevamente la búsqueda pero que demore 1 segundo
 

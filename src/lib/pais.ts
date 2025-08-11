@@ -13,11 +13,11 @@ export class Pais {
     public timezone: string,
   ) {}
 
-  superpoblado() {
+  get superpoblado() {
     return this.poblacion / this.area > 100
   }
 
-  queHoraEs() {
+  get queHoraEs() {
     return format(toZonedTime(new Date(), this.timezone.slice(3)), 'HH:mm:ss')
   }
 }

@@ -19,3 +19,10 @@
 input {
   padding-left: 0.5rem;
 }
+
+div .error-message {
+  background-color: lightcoral;
+  color: darkred;
+  padding: 1rem;
+  border: 1px solid darkred;
+}

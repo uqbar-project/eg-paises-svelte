@@ -24,7 +24,7 @@
     </div>
     <div class="poblacion">
       <span>Población:</span>{formatearEntero(pais.poblacion)}
-      {#if pais.superpoblado()}
+      {#if pais.superpoblado}
         <img
           alt="está superpoblado"
           title="está superpoblado"
@@ -34,7 +34,7 @@
       {/if}
     </div>
     <div><span>Código de país:</span>{pais.codigo}</div>
-    <div title={pais.timezone}><span>Qué hora es:</span>{pais.queHoraEs()}</div>
+    <div title={pais.timezone}><span>Qué hora es:</span>{pais.queHoraEs}</div>
   </div>
   <button data-testid="volver" class="botonera" onclick={volver}>Volver</button>
 </div>
