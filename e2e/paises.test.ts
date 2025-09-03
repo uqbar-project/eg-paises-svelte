@@ -1,4 +1,4 @@
-import { expect, Page, test } from '@playwright/test'
+import { expect, test, type Page } from '@playwright/test'
 
 test('flujo principal: buscamos un país y al hacer click nos dirige a la página con la información de dicho país', async ({
   page
