@@ -7,9 +7,47 @@
 
 En este ejemplo podemos estudiar
 
+- manejo de variables de entorno
 - cómo funciona el routing de Svelte
 - cómo es la búsqueda asincrónica en un origen externo
 - un ejemplo de test end-to-end (e2e)
+
+### Variables de Entorno en SvelteKit
+
+Este proyecto utiliza **variables de entorno** para configurar parámetros que pueden variar según el entorno (desarrollo, producción, test). SvelteKit las carga automáticamente según el **modo de ejecución**.
+
+### Archivos de configuración
+
+- `.env` → variables base comunes a todos los entornos.  
+- `.env.development` → se carga al ejecutar el proyecto en modo desarrollo.
+- `.env.production` → se carga al generar el build o ejecutar en producción.
+- `.env.local` → variables locales de tu máquina, no versionadas, que sobrescriben las demás si existen.
+
+### Convenciones
+
+- Las variables que comienzan con `PUBLIC_` son accesibles tanto en el **cliente** como en el **servidor**.
+- Las variables sin `PUBLIC_` solo están disponibles en el **servidor**.
+
+### Buenas prácticas
+
+1. **Nunca subir archivos `.env`** al repositorio ( en este ejemplo se excluyen de gitignore por cuestiones didácticas ).
+2. Mantener separados los entornos (`development`, `production`, `test`) aunque los valores sean iguales en algunos casos.
+3. Usar `.env.local` para configuraciones personales que no deben compartirse.
+
+### Prioridad de carga
+
+.env.[mode].local > .env.[mode] > .env.local > .env
+
+- `.env.[mode].local` sobrescribe `.env.[mode]`.
+- `.env.local` sobrescribe `.env`.
+- Esto permite tener configuraciones específicas por entorno y por máquina.
+
+### Error en import de variables de entorno
+
+Es necesario ejecutar el script a fin de que las variables de entorno estén disponibles en el proyecto:
+```bash
+yarn run check
+```
 
 ## Página principal
 
@@ -57,7 +95,7 @@ y el service se define además como una clase pero exponemos una instancia, que 
 ```ts
 class PaisService {
   async buscarPais(paisBusqueda: string): Promise<Pais[]> {
-    const response = await axios.get(`${BASE_URL}/${VERSION}/name/${paisBusqueda}`)
+    const response = await axios.get(`${PUBLIC_API_BASE_URL}/${PUBLIC_API_VERSION}/name/${paisBusqueda}`)
     return response.data.map(toPais)
   }
   ...
