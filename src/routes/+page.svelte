@@ -72,7 +72,7 @@
   <label for="busquedaAutomatica">Buscar automáticamente</label>
 </div>
 <div class="paises">
-  {#each paises as pais}
+  {#each paises as pais (pais.codigo)}
     <button
       class="pais"
       data-testid={`pais-${pais.codigo}`}

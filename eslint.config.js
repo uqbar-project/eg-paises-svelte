@@ -32,6 +32,7 @@ export default [
       'no-cond-assign': ['error', 'always'],
       'no-console': 'error',
       '@typescript-eslint/sort-type-constituents': 'error',
+      'svelte/no-navigation-without-resolve': 'ignore',
     },
   },
   {
