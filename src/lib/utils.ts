@@ -1,7 +1,9 @@
 import { AxiosError } from 'axios'
 
+import { PUBLIC_REGION } from '$env/static/public'
+
 export const formatearEntero = (numero: number) =>
-  new Intl.NumberFormat('es-AR', { minimumFractionDigits: 0 }).format(numero)
+  new Intl.NumberFormat(PUBLIC_REGION, { minimumFractionDigits: 0 }).format(numero)
 
 export const getErrorMessage = (error: unknown) => {
   if (error instanceof AxiosError) {
