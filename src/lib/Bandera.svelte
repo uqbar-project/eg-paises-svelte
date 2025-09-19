@@ -1,5 +1,5 @@
 <script lang='ts'>
-  let { bandera } = $props()
+  let { bandera }: { bandera: string } = $props()
 </script>
 <style>
 .bandera {
