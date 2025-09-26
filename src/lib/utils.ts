@@ -1,12 +1,12 @@
-import { AxiosError } from 'axios'
+import { isAxiosError } from 'axios'
 
 import { PUBLIC_REGION } from '$env/static/public'
 
-export const formatearEntero = (numero: number) =>
+export const formatearEntero = (numero: number): string =>
   new Intl.NumberFormat(PUBLIC_REGION, { minimumFractionDigits: 0 }).format(numero)
 
-export const getErrorMessage = (error: unknown) => {
-  if (error instanceof AxiosError) {
+export const getErrorMessage = (error: unknown): string => {
+  if (isAxiosError(error)) {
     // eslint-disable-next-line no-console
     console.error(error)
     if ((error.status ?? 0) >= 500) {

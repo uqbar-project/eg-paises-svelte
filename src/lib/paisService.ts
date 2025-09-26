@@ -3,14 +3,27 @@ import { Pais } from './pais'
 
 import { PUBLIC_API_BASE_URL, PUBLIC_API_VERSION } from '$env/static/public'
 
+type PaisJson = {
+  flags: { svg: string },
+  name: { common: string }
+  translations: { [key: string]: { common: string } }
+  currencies: { [key: string]: { name: string; symbol: string } }
+  cioc: string
+  ccn3: string
+  population: number
+  area: number
+  capital: string
+  timezones: string[]
+}
+
 class PaisService {
   async buscarPais(paisBusqueda: string): Promise<Pais[]> {
-    const response = await axios.get(`${PUBLIC_API_BASE_URL}/${PUBLIC_API_VERSION}/name/${paisBusqueda}`)
+    const response = await axios.get<PaisJson[]>(`${PUBLIC_API_BASE_URL}/${PUBLIC_API_VERSION}/name/${paisBusqueda}`)
     return response.data.map(toPais)
   }
 
   async datosDePais(codigoDePais: string): Promise<Pais> {
-    const response = await axios.get(`${PUBLIC_API_BASE_URL}/${PUBLIC_API_VERSION}/alpha/${codigoDePais}`)
+    const response = await axios.get<PaisJson[]>(`${PUBLIC_API_BASE_URL}/${PUBLIC_API_VERSION}/alpha/${codigoDePais}`)
     return toPais(response.data[0])
   }
 }
@@ -26,18 +39,7 @@ const toPais = ({
   area,
   capital,
   timezones
-}: {
-  flags: { svg: string },
-  name: { common: string }
-  translations: { [key: string]: { common: string } }
-  currencies: { [key: string]: { name: string; symbol: string } }
-  cioc: string
-  ccn3: string
-  population: number
-  area: number
-  capital: string
-  timezones: string[]
-}): Pais => {
+}: PaisJson): Pais => {
   const keysCurrencies = Object.keys(currencies ?? {})
   const countryName = translations['spa']?.common ?? name?.common
   const currency = keysCurrencies?.length ? currencies[keysCurrencies[0]].name : ''
